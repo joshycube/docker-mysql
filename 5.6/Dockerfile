@@ -6,8 +6,7 @@ COPY my.cnf /etc/mysql/conf.d/my.cnf
 COPY mysqld_charset.cnf /etc/mysql/conf.d/mysqld_charset.cnf
 
 RUN apt-get update && \
-    apt-get install vim \
-    apt-get -yq install mysql-server-5.6 pwgen && \
+    apt-get -yq install mysql-server-5.6 pwgen vim && \
     rm -rf /var/lib/apt/lists/* && \
     rm /etc/mysql/conf.d/mysqld_safe_syslog.cnf && \
     if [ ! -f /usr/share/mysql/my-default.cnf ] ; then cp /etc/mysql/my.cnf /usr/share/mysql/my-default.cnf; fi && \
