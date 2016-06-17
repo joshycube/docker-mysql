@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM phusion/baseimage
 MAINTAINER Fernando Mayo <fernando@tutum.co>, Feng Honglin <hfeng@tutum.co>
 
 # Add MySQL configuration
@@ -6,6 +6,7 @@ COPY my.cnf /etc/mysql/conf.d/my.cnf
 COPY mysqld_charset.cnf /etc/mysql/conf.d/mysqld_charset.cnf
 
 RUN apt-get update && \
+    apt-get install vim \
     apt-get -yq install mysql-server-5.6 pwgen && \
     rm -rf /var/lib/apt/lists/* && \
     rm /etc/mysql/conf.d/mysqld_safe_syslog.cnf && \
